@@ -73,8 +73,11 @@ const (
 )
 
 // GetByUPRN fetches bin collection information for a specified UPRN.
-func GetByUPRN(ctx context.Context, uprn uint64) (bins []Collection, err error) {
+func GetByUPRN(ctx context.Context, uprn uint64, days uint64) (bins []Collection, err error) {
 	url := baseURL + strconv.FormatUint(uprn, 10)
+	if days != 0 {
+		url += "/" + strconv.FormatUint(days, 10)
+	}
 
 	return getURL(ctx, url)
 }
