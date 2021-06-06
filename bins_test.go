@@ -250,22 +250,18 @@ func TestGetURL(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	gmt, err := time.LoadLocation("Europe/London")
-	if err != nil {
-		panic(err)
-	}
 	expected := []Collection{
-		{[]BinType{Black}, time.Date(2020, time.November, 18, 0, 0, 0, 0, gmt)},
-		{[]BinType{Green, Orange}, time.Date(2020, time.November, 25, 0, 0, 0, 0, gmt)},
-		{[]BinType{Black}, time.Date(2020, time.December, 2, 0, 0, 0, 0, gmt)},
-		{[]BinType{Orange}, time.Date(2020, time.December, 9, 0, 0, 0, 0, gmt)},
-		{[]BinType{Black}, time.Date(2020, time.December, 16, 0, 0, 0, 0, gmt)},
-		{[]BinType{Orange}, time.Date(2020, time.December, 23, 0, 0, 0, 0, gmt)},
-		{[]BinType{Black}, time.Date(2021, time.January, 2, 0, 0, 0, 0, gmt)},
-		{[]BinType{Orange}, time.Date(2021, time.January, 8, 0, 0, 0, 0, gmt)},
-		{[]BinType{Black}, time.Date(2021, time.January, 14, 0, 0, 0, 0, gmt)},
-		{[]BinType{Orange}, time.Date(2021, time.January, 20, 0, 0, 0, 0, gmt)},
-		{[]BinType{Black}, time.Date(2021, time.January, 27, 0, 0, 0, 0, gmt)},
+		{[]BinType{Black}, time.Date(2020, time.November, 18, 0, 0, 0, 0, time.UTC)},
+		{[]BinType{Green, Orange}, time.Date(2020, time.November, 25, 0, 0, 0, 0, time.UTC)},
+		{[]BinType{Black}, time.Date(2020, time.December, 2, 0, 0, 0, 0, time.UTC)},
+		{[]BinType{Orange}, time.Date(2020, time.December, 9, 0, 0, 0, 0, time.UTC)},
+		{[]BinType{Black}, time.Date(2020, time.December, 16, 0, 0, 0, 0, time.UTC)},
+		{[]BinType{Orange}, time.Date(2020, time.December, 23, 0, 0, 0, 0, time.UTC)},
+		{[]BinType{Black}, time.Date(2021, time.January, 2, 0, 0, 0, 0, time.UTC)},
+		{[]BinType{Orange}, time.Date(2021, time.January, 8, 0, 0, 0, 0, time.UTC)},
+		{[]BinType{Black}, time.Date(2021, time.January, 14, 0, 0, 0, 0, time.UTC)},
+		{[]BinType{Orange}, time.Date(2021, time.January, 20, 0, 0, 0, 0, time.UTC)},
+		{[]BinType{Black}, time.Date(2021, time.January, 27, 0, 0, 0, 0, time.UTC)},
 	}
 
 	if !reflect.DeepEqual(actual, expected) {

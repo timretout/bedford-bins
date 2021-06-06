@@ -13,19 +13,12 @@ import (
 
 // Client is the *http.Client used to request the API.
 var Client *http.Client
-var bedford *time.Location
 
 const baseURL = "https://bbaz-as-prod-bartecapi.azurewebsites.net/api/bincollections/residential/getbyuprn/"
 
 func init() {
 	Client = &http.Client{
 		Timeout: time.Second * 10, // Maximum of 10 secs
-	}
-
-	var err error
-	bedford, err = time.LoadLocation("Europe/London")
-	if err != nil {
-		panic(err)
 	}
 }
 
@@ -56,7 +49,7 @@ func (t *customTime) UnmarshalJSON(b []byte) (err error) {
 		t.Time = time.Time{}
 		return
 	}
-	t.Time, err = time.ParseInLocation("2006-01-02T15:04:05", s, bedford)
+	t.Time, err = time.Parse("2006-01-02T15:04:05", s)
 	return
 }
 
